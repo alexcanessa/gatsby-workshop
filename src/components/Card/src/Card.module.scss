@@ -1,0 +1,10 @@
+.card {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.content,
+.footer {
+  padding: 10px;
+}

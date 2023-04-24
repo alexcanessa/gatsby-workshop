@@ -1,0 +1,8 @@
+{
+  "editor.rulers": [80],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.rome": true
+  }
+}
