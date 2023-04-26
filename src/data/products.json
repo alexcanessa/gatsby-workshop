@@ -1,6 +1,20 @@
 [
   {
-    "__typename": "Product",
-    "name": "Pikachu"
+    "__typename": "Pokemon",
+    "name": "Pikachu",
+    "slug": "pikachu",
+    "description": "Thunder mouse"
+  },
+  {
+    "__typename": "Pokemon",
+    "name": "Pichu",
+    "slug": "pichu",
+    "description": "Smaller thunder mouse"
+  },
+  {
+    "__typename": "Pokemon",
+    "name": "Raichu",
+    "slug": "raichu",
+    "description": "Biggerhunder mouse"
   }
 ]
