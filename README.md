@@ -7,13 +7,10 @@ For more workshop specific utilites visit [WORKSHOP.md](./WORKSHOP.md);
 
 ## 🚀 Quick start
 
-1. **Create a Gatsby site.**
-
-   Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+1. **Install dependencies.**
 
    ```shell
-   # create a new Gatsby site using the minimal TypeScript starter
-   npm init gatsby -- -ts
+   yarn
    ```
 
 2. **Start developing.**
@@ -21,8 +18,7 @@ For more workshop specific utilites visit [WORKSHOP.md](./WORKSHOP.md);
    Navigate into your new site’s directory and start it up.
 
    ```shell
-   cd my-gatsby-site/
-   npm run develop
+   yarn start
    ```
 
 3. **Open the code and start customizing!**
