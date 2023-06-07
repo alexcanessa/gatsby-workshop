@@ -2,7 +2,13 @@ import { graphql, PageProps } from "gatsby";
 import {
   AddToCartButton,
   CartLink,
+  LineItem,
+  LineItemAmount,
+  LineItemName,
+  LineItemQuantity,
+  LineItemRemoveLink,
   LineItemsContainer,
+  LineItemsCount,
   Price,
   PricesContainer,
 } from "@commercelayer/react-components";
@@ -21,6 +27,17 @@ const PokemonPage = ({ data }: PageProps<Queries.ProductPageQuery>) => {
       <header className={styles.header}>
         <LineItemsContainer>
           <CartLink label="Go to checkout" className={styles.cartLink} />
+        </LineItemsContainer>
+        <LineItemsContainer>
+          <p className="your-custom-class">
+            Your shopping cart contains <LineItemsCount /> items
+          </p>
+          <LineItem>
+            <LineItemName />
+            <LineItemQuantity max={10} />
+            <LineItemAmount />
+            <LineItemRemoveLink />
+          </LineItem>
         </LineItemsContainer>
       </header>
       <p>{product?.description || "Description not found"}</p>
