@@ -1,10 +1,29 @@
-import type { HeadFC } from "gatsby";
+import { type HeadFC, graphql, PageProps, Link } from "gatsby";
 import Page from "../components/Page";
 
-const IndexPage = () => {
+const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
+  const {
+    allProductsJson: { nodes: products },
+  } = data;
+
   return (
     <Page title={"Gatsby Workshop"}>
       <p>Starting the workshop now</p>
+      <ul>
+        {products.map(({ slug, name }) => {
+          if (!slug) {
+            return null;
+          }
+
+          return (
+            <li>
+              <Link to={slug} key={slug}>
+                {name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     </Page>
   );
 };
@@ -12,3 +31,14 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head: HeadFC = () => <title>Home Page</title>;
+
+export const query = graphql`
+  query ProductListing {
+    allProductsJson {
+      nodes {
+        slug
+        name
+      }
+    }
+  }
+`;

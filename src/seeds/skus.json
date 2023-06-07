@@ -1,0 +1,20 @@
+[
+  {
+    "code": "pikachu",
+    "name": "Pikachu",
+    "image_url": "https://img.yourdomain.com/skus/pikachu.png",
+    "shipping_category_id": "pKekvFZGgw"
+  },
+  {
+    "code": "pichu",
+    "name": "Pichu",
+    "image_url": "https://img.yourdomain.com/skus/pichu.png",
+    "shipping_category_id": "pKekvFZGgw"
+  },
+  {
+    "code": "raiachu",
+    "name": "Raiachu",
+    "image_url": "https://img.yourdomain.com/skus/raichu.png",
+    "shipping_category_id": "pKekvFZGgw"
+  }
+]

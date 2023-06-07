@@ -3,18 +3,21 @@
     "__typename": "Pokemon",
     "name": "Pikachu",
     "slug": "pikachu",
+    "sku": "pikachu",
     "description": "Thunder mouse"
   },
   {
     "__typename": "Pokemon",
     "name": "Pichu",
     "slug": "pichu",
+    "sku": "pichu",
     "description": "Smaller thunder mouse"
   },
   {
     "__typename": "Pokemon",
     "name": "Raichu",
     "slug": "raichu",
+    "sku": "raichu",
     "description": "Biggerhunder mouse"
   }
 ]
