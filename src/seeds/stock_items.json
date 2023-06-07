@@ -1,0 +1,14 @@
+[
+  {
+    "sku_code": "pikachu",
+    "quantity": 10
+  },
+  {
+    "sku_code": "pichu",
+    "quantity": 5
+  },
+  {
+    "sku_code": "raiachu",
+    "quantity": 4
+  }
+]

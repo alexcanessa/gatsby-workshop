@@ -1,0 +1,17 @@
+[
+  {
+    "sku_code": "pikachu",
+    "amount_cents": "1500",
+    "compare_at_amount_cents": "1900"
+  },
+  {
+    "sku_code": "pichu",
+    "amount_cents": "3400",
+    "compare_at_amount_cents": "3900"
+  },
+  {
+    "sku_code": "raiachu",
+    "amount_cents": "2400",
+    "compare_at_amount_cents": "3100"
+  }
+]
