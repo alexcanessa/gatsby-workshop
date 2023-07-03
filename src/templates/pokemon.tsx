@@ -1,19 +1,10 @@
 import { graphql, PageProps } from "gatsby";
 import {
   AddToCartButton,
-  CartLink,
-  LineItem,
-  LineItemAmount,
-  LineItemName,
-  LineItemQuantity,
-  LineItemRemoveLink,
-  LineItemsContainer,
-  LineItemsCount,
   Price,
   PricesContainer,
 } from "@commercelayer/react-components";
 import Page from "../components/Page";
-import * as styles from "./pokemon.module.scss";
 
 const PokemonPage = ({ data }: PageProps<Queries.ProductPageQuery>) => {
   const { productsJson: product } = data;
@@ -23,29 +14,44 @@ const PokemonPage = ({ data }: PageProps<Queries.ProductPageQuery>) => {
   }
 
   return (
-    <Page title={product?.name || "Name not found"}>
-      <header className={styles.header}>
-        <LineItemsContainer>
-          <CartLink label="Go to checkout" className={styles.cartLink} />
-        </LineItemsContainer>
-        <LineItemsContainer>
-          <p className="your-custom-class">
-            Your shopping cart contains <LineItemsCount /> items
-          </p>
-          <LineItem>
-            <LineItemName />
-            <LineItemQuantity max={10} />
-            <LineItemAmount />
-            <LineItemRemoveLink />
-          </LineItem>
-        </LineItemsContainer>
-      </header>
-      <p>{product?.description || "Description not found"}</p>
-      <PricesContainer>
-        <span>Price:</span>
-        <Price skuCode={product?.sku} showCompare={false} />
-      </PricesContainer>
-      <AddToCartButton skuCode={product?.sku} />
+    <Page
+      title={product?.name || "Name not found"}
+      subtitle={product?.description}
+      imageUrl={product?.image || undefined}
+    >
+      <div style={{ display: "flex" }}>
+        <div style={{ flex: 2 }}>
+          <p>{product?.fullDescription}</p>
+        </div>
+        <div
+          style={{
+            flex: 1,
+            paddingLeft: 20,
+            marginLeft: 20,
+            borderLeft: "1px solid #333",
+          }}
+        >
+          <PricesContainer>
+            <span>Price:</span>
+            <Price skuCode={product?.sku} showCompare={false} />
+          </PricesContainer>
+          <div>
+            <AddToCartButton
+              skuCode={product?.sku}
+              style={{
+                border: "none",
+                padding: 10,
+                background: "#9b0000",
+                color: "#fff",
+                fontFamily: "Arial, Helvetica, Sans-serif",
+                fontSize: 18,
+                marginTop: 30,
+                cursor: "pointer",
+              }}
+            />
+          </div>
+        </div>
+      </div>
     </Page>
   );
 };
@@ -57,6 +63,8 @@ export const query = graphql`
     productsJson(id: { eq: $id }) {
       name
       description
+      fullDescription
+      image
       sku
     }
   }

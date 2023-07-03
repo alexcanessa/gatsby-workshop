@@ -1,0 +1,52 @@
+.basket {
+  box-sizing: border-box;
+  position: fixed;
+  width: 35%;
+  background: #333;
+  height: 100%;
+  top: 0;
+  left: 100%;
+  padding: 20px;
+  transition: left 0.35s ease-in-out;
+  color: #fff;
+}
+
+.basketTrigger {
+  position: relative;
+  background: none;
+  border: none;
+  width: 35px;
+  cursor: pointer;
+}
+
+.cartLink {
+  color: #fff;
+}
+
+.count {
+  position: absolute;
+  top: -10px;
+  font-size: 16px;
+  right: 0;
+  background: #fff;
+}
+
+.basketImage {
+  width: 100%;
+}
+
+.active {
+  left: 65%;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  background: none;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+}

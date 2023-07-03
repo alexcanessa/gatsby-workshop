@@ -1,17 +1,22 @@
 import CommerceLayerAuth from "../../CommerceLayerAuth";
+import Footer from "../../Footer";
+import Header from "../../Header";
+import Hero from "../../Hero/src/Hero";
+import Spring from "../../Spring";
 import * as styles from "./Page.module.scss";
 
 export type PageProps = {
   children: React.ReactNode;
   title: React.ReactNode;
+  subtitle?: React.ReactNode;
+  imageUrl?: string;
 };
 
-// const GATSBY_CLIENT_ID = "JCsJR5n2pCfUIe4EIYzKXuNDRKxDW5r__J724UCAwg0"; // CLI
-const GATSBY_CLIENT_ID = "K_bEKkTml8rd4p-OoQbsttuFrwc6AYT6ZJxb-C7sVx8";
-const GATSBY_SLUG = "pokeshop";
-const GATSBY_MARKET_ID = 13552;
+const GATSBY_CLIENT_ID = process.env.GATSBY_CLIENT_ID;
+const GATSBY_SLUG = process.env.GATSBY_SLUG;
+const GATSBY_MARKET_ID = process.env.GATSBY_MARKET_ID;
 
-const Page = ({ children, title }: PageProps) => {
+const Page = ({ children, title, subtitle, imageUrl }: PageProps) => {
   if (!GATSBY_CLIENT_ID || !GATSBY_SLUG || !GATSBY_MARKET_ID) {
     return <p>Ohoopppsss</p>;
   }
@@ -22,9 +27,15 @@ const Page = ({ children, title }: PageProps) => {
       slug={GATSBY_SLUG}
       market={+GATSBY_MARKET_ID}
     >
-      <main className={styles.page}>
-        <h1 className={styles.title}>{title}</h1>
-        <div>{children}</div>
+      <main>
+        <Header />
+        <Hero title={title} imageUrl={imageUrl}>
+          {subtitle}
+        </Hero>
+        <Spring>
+          <div className={styles.content}>{children}</div>
+        </Spring>
+        <Footer />
       </main>
     </CommerceLayerAuth>
   );
