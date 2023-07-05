@@ -19,6 +19,7 @@
   "dependencies": {
     "@commercelayer/js-auth": "4.0.0",
     "@commercelayer/react-components": "^4.4.4",
+    "@frontegg/react": "^5.0.44",
     "gatsby": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
@@ -30,6 +31,7 @@
     "gatsby-transformer-sharp": "^5.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
     "sass": "^1.62.0"
   },
   "devDependencies": {

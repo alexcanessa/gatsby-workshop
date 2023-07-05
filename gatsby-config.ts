@@ -1,6 +1,7 @@
 import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
+  trailingSlash: "never",
   siteMetadata: {
     title: "Gatsby Workshop",
     siteUrl: "https://www.yourdomain.tld",
