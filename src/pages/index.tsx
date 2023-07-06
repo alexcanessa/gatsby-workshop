@@ -1,3 +1,4 @@
+import { Price, PricesContainer } from "@commercelayer/react-components";
 import { type HeadFC, graphql, PageProps, Link } from "gatsby";
 import Card from "../components/Card";
 import Page from "../components/Page";
@@ -20,8 +21,8 @@ const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
         your basket and buy them all!
       </p>
       <div style={{ display: "flex", gap: 10, marginTop: 50 }}>
-        {products.map(({ slug, name, image, description }) => {
-          if (!slug || !name) {
+        {products.map(({ slug, name, image, description, sku }) => {
+          if (!slug || !name || !sku) {
             return null;
           }
 
@@ -32,7 +33,13 @@ const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
                 imageUrl={image || undefined}
                 footer={<Link to={slug}>Catch it!</Link>}
               >
-                {description}
+                <div style={{ display: "flex" }}>
+                  <p>{description}</p>
+                  <PricesContainer>
+                    <span>Price:</span>
+                    <Price skuCode={sku} showCompare={false} />
+                  </PricesContainer>
+                </div>
               </Card>
             </div>
           );
@@ -54,6 +61,7 @@ export const query = graphql`
         name
         image
         description
+        sku
       }
     }
   }
