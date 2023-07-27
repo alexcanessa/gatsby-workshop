@@ -20,6 +20,7 @@
     "@commercelayer/js-auth": "4.0.0",
     "@commercelayer/react-components": "^4.4.4",
     "@frontegg/react": "^5.0.44",
+    "classnames": "^2.3.2",
     "gatsby": "^5.9.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-manifest": "^5.9.0",

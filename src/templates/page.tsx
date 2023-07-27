@@ -46,6 +46,9 @@ export const query = graphql`
       subtitle {
         subtitle
       }
+      sections {
+        ...Sections
+      }
     }
     allContentfulCampaign {
       nodes {

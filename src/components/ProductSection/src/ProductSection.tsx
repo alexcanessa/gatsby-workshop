@@ -1,6 +1,8 @@
 import { Price, PricesContainer } from "@commercelayer/react-components";
 import { graphql, Link } from "gatsby";
 import ReactMarkdown from "react-markdown";
+import classnames from "classnames";
+import * as styles from "./ProductSection.module.scss";
 import Card from "../../Card";
 
 const ProductSection = ({ data }: { data: Queries.ProductSectionFragment }) => {
@@ -9,14 +11,14 @@ const ProductSection = ({ data }: { data: Queries.ProductSectionFragment }) => {
   }
 
   return (
-    <div>
+    <div className={classnames(styles.productSection, "product-section")}>
       <h2>{data.title}</h2>
       {data.description?.description && (
         <div>
           <ReactMarkdown>{data.description.description}</ReactMarkdown>
         </div>
       )}
-      <div style={{ display: "flex", gap: 10, marginTop: 50 }}>
+      <div className={styles.cardWrapper}>
         {data.products.map((product) => {
           if (!product) {
             return null;
@@ -35,13 +37,7 @@ const ProductSection = ({ data }: { data: Queries.ProductSectionFragment }) => {
                 imageData={image?.gatsbyImageData || undefined}
                 footer={<Link to={slug}>Catch it!</Link>}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
+                <div className={styles.cardContent}>
                   {shortDescription?.shortDescription && (
                     <p>{shortDescription?.shortDescription}</p>
                   )}
