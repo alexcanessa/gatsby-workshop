@@ -31,3 +31,9 @@
   transform: translateY(-50%);
   z-index: 1;
 }
+
+:global(.experiment-grey-bkg-bucket-a .experiment-grey-bkg-active) {
+  .hero {
+    background: grey;
+  }
+}
