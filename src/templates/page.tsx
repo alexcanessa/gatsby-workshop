@@ -32,7 +32,9 @@ export const Head: HeadFC<Queries.PageQuery> = ({ data }) => (
     <title>Home Page</title>
     {/* @ts-ignore */}
     <script id="edge-config" language="json">
-      {JSON.stringify({ bodyClass: "test-from-edge", data })}
+      {JSON.stringify({
+        campaigns: data.allContentfulCampaign.nodes,
+      })}
     </script>
   </>
 );
@@ -44,8 +46,19 @@ export const query = graphql`
       subtitle {
         subtitle
       }
-      sections {
-        ...Sections
+    }
+    allContentfulCampaign {
+      nodes {
+        id
+        trafficAmount
+        experiments {
+          ... on ContentfulExperiment {
+            slug
+          }
+          ... on ContentfulExperimentReferences {
+            slug
+          }
+        }
       }
     }
   }
