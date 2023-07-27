@@ -5,7 +5,7 @@ import Page from "../components/Page";
 
 const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
   const {
-    allProductsJson: { nodes: products },
+    allContentfulPokemon: { nodes: products },
   } = data;
 
   return (
@@ -21,7 +21,7 @@ const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
         your basket and buy them all!
       </p>
       <div style={{ display: "flex", gap: 10, marginTop: 50 }}>
-        {products.map(({ slug, name, image, description, sku }) => {
+        {products.map(({ slug, name, image, shortDescription, sku }) => {
           if (!slug || !name || !sku) {
             return null;
           }
@@ -30,11 +30,13 @@ const IndexPage = ({ data }: PageProps<Queries.ProductListingQuery>) => {
             <div key={slug} style={{ flex: 1 }}>
               <Card
                 title={name}
-                imageUrl={image || undefined}
+                imageData={image?.gatsbyImageData || undefined}
                 footer={<Link to={slug}>Catch it!</Link>}
               >
                 <div style={{ display: "flex" }}>
-                  <p>{description}</p>
+                  {shortDescription?.shortDescription && (
+                    <p>{shortDescription?.shortDescription}</p>
+                  )}
                   <PricesContainer>
                     <span>Price:</span>
                     <Price skuCode={sku} showCompare={false} />
@@ -55,13 +57,17 @@ export const Head: HeadFC = () => <title>Home Page</title>;
 
 export const query = graphql`
   query ProductListing {
-    allProductsJson {
+    allContentfulPokemon {
       nodes {
         slug
         name
-        image
-        description
+        image {
+          gatsbyImageData
+        }
         sku
+        shortDescription {
+          shortDescription
+        }
       }
     }
   }

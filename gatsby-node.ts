@@ -4,30 +4,40 @@ import { CreatePagesArgs } from "gatsby";
 exports.createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const { createPage } = actions;
 
-  const { data } = await graphql<Queries.GetProductPagesQuery>(`
-    query GetProductPages {
-      allProductsJson {
+  const { data } = await graphql<Queries.GetAllPagesQuery>(`
+    query GetAllPages {
+      allContentfulPokemon {
         nodes {
-          id
+          __typename
+          slug
+        }
+      }
+      allContentfulPage {
+        nodes {
+          __typename
           slug
         }
       }
     }
   `);
 
-  const productTemplate = path.resolve("./src/templates/pokemon.tsx");
-  const pokemons = data?.allProductsJson.nodes;
+  const typenameToTemplateMap = {
+    ContentfulPokemon: path.resolve("./src/templates/pokemon.tsx"),
+    ContentfulPage: path.resolve("./src/templates/page.tsx"),
+  };
+  const pokemons = data?.allContentfulPokemon.nodes || [];
+  const pages = data?.allContentfulPage.nodes || [];
 
-  (pokemons || []).forEach((pokemon) => {
-    if (!pokemon.slug) {
+  [...pages, ...pokemons].forEach((page) => {
+    if (!page.slug) {
       return;
     }
 
     createPage({
-      path: pokemon.slug,
-      component: productTemplate,
+      path: page.slug,
+      component: typenameToTemplateMap[page.__typename],
       context: {
-        id: pokemon.id,
+        slug: page.slug,
       },
     });
   });
