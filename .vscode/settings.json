@@ -4,5 +4,6 @@
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports.rome": true
-  }
+  },
+  "deno.enablePaths": ["netlify/edge-functions"]
 }
