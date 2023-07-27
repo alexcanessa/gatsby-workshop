@@ -1,3 +1,4 @@
+import { IGatsbyImageData } from "gatsby-plugin-image";
 import CommerceLayerAuth from "../../CommerceLayerAuth";
 import Footer from "../../Footer";
 import Header from "../../Header";
@@ -10,13 +11,14 @@ export type PageProps = {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   imageUrl?: string;
+  imageData?: IGatsbyImageData;
 };
 
 const GATSBY_CLIENT_ID = process.env.GATSBY_CLIENT_ID;
 const GATSBY_SLUG = process.env.GATSBY_SLUG;
 const GATSBY_MARKET_ID = process.env.GATSBY_MARKET_ID;
 
-const Page = ({ children, title, subtitle, imageUrl }: PageProps) => {
+const Page = ({ children, title, subtitle, imageData }: PageProps) => {
   if (!GATSBY_CLIENT_ID || !GATSBY_SLUG || !GATSBY_MARKET_ID) {
     return <p>Ohoopppsss</p>;
   }
@@ -29,7 +31,7 @@ const Page = ({ children, title, subtitle, imageUrl }: PageProps) => {
     >
       <main>
         <Header />
-        <Hero title={title} imageUrl={imageUrl}>
+        <Hero title={title} imageData={imageData}>
           {subtitle}
         </Hero>
         <Spring>

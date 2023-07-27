@@ -1,10 +1,14 @@
 import type { GatsbyConfig } from "gatsby";
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   trailingSlash: "never",
   siteMetadata: {
     title: "Gatsby Workshop",
-    siteUrl: "https://www.yourdomain.tld",
+    siteUrl: "https://gatsby-pokeshop.netlify.com",
   },
   graphqlTypegen: true,
   jsxRuntime: "automatic",
@@ -12,14 +16,15 @@ const config: GatsbyConfig = {
     "gatsby-plugin-sass",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-sharp",
+    "gatsby-transformer-sharp",
+    "gatsby-transformer-json",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
       },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -29,13 +34,12 @@ const config: GatsbyConfig = {
       __key: "images",
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: "gatsby-source-contentful",
       options: {
-        name: "data",
-        path: "./src/data",
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    "gatsby-transformer-json",
   ],
 };
 

@@ -3,6 +3,8 @@
 }
 
 .content {
+  overflow: hidden;
+  position: relative;
   padding: 60px 0;
   border-bottom: 1px solid #333;
   color: #333;
@@ -11,10 +13,21 @@
 
 .title {
   font-size: 80px;
+  position: relative;
+  z-index: 2;
 }
 
 .subtitle {
   font-size: 20px;
   line-height: 1.8em;
   max-width: 70%;
+}
+
+.image {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
 }

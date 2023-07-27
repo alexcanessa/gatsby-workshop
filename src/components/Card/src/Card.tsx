@@ -1,19 +1,24 @@
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import { cloneElement, isValidElement, useMemo } from "react";
 import * as styles from "./Card.module.scss";
 
 export type CardProps = {
   title: React.ReactNode;
   children: React.ReactNode;
-  imageUrl?: string;
+  imageData?: IGatsbyImageData;
   footer?: React.ReactNode;
 };
 
-const Card = ({ title, children, imageUrl, footer }: CardProps) => {
+const Card = ({ title, children, imageData, footer }: CardProps) => {
   return (
     <div className={styles.card}>
-      {imageUrl && (
+      {imageData && (
         <div className={styles.imageWrapper}>
-          <img src={imageUrl} alt={String(title)} className={styles.image} />
+          <GatsbyImage
+            alt={String(title)}
+            image={imageData}
+            className={styles.image}
+          />
         </div>
       )}
       <div className={styles.content}>
