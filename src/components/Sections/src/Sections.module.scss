@@ -3,3 +3,17 @@
   padding-top: 50px;
   border-top: 1px solid #ccc;
 }
+
+.b {
+  display: none;
+}
+
+:global(.edge-experiment-invert-order-homepage) {
+  .a {
+    display: none;
+  }
+
+  .b {
+    display: block;
+  }
+}

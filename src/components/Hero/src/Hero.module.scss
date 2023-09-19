@@ -31,3 +31,9 @@
   transform: translateY(-50%);
   z-index: 1;
 }
+
+:global(.edge-experiment-grey-bkg) {
+  .hero {
+    background: grey;
+  }
+}

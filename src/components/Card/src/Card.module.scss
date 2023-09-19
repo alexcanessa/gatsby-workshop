@@ -30,3 +30,15 @@
 .footer {
   padding: 20px;
 }
+
+:global(.edge-experiment-list-no-cards .product-section) {
+  .card {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .image,
+  .imageWrapper {
+    display: none;
+  }
+}

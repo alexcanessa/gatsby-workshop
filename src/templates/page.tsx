@@ -27,7 +27,17 @@ const IndexPage = ({ data }: PageProps<Queries.PageQuery>) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC<Queries.PageQuery> = ({ data }) => (
+  <>
+    <title>Home Page</title>
+    {/* @ts-ignore */}
+    <script id="edge-config" language="json">
+      {JSON.stringify({
+        campaigns: data.allContentfulCampaign.nodes,
+      })}
+    </script>
+  </>
+);
 
 export const query = graphql`
   query Page($slug: String!) {
@@ -38,6 +48,20 @@ export const query = graphql`
       }
       sections {
         ...Sections
+      }
+    }
+    allContentfulCampaign {
+      nodes {
+        id
+        trafficAmount
+        experiments {
+          ... on ContentfulExperiment {
+            slug
+          }
+          ... on ContentfulExperimentReferences {
+            slug
+          }
+        }
       }
     }
   }

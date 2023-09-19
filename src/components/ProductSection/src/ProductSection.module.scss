@@ -1,0 +1,21 @@
+.cardContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardWrapper {
+  display: flex;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+:global(.edge-experiment-list-no-cards) {
+  .cardWrapper {
+    flex-direction: column;
+  }
+
+  .cardContent {
+    flex-direction: row;
+  }
+}
