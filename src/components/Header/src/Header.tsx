@@ -24,7 +24,6 @@ const Header = () => {
         </ul>
       </div>
       <div className={styles.actions}>
-        <UserLogin />
         <BasketTrigger
           onClick={() => {
             setIsBasketOpen(true);

@@ -21,6 +21,7 @@ export default TitleWithContent;
 export const query = graphql`
   fragment TitleWithContent on ContentfulTitleWithContent {
     __typename
+    id
     title
     content {
       content

@@ -66,6 +66,7 @@ export default ProductSection;
 export const query = graphql`
   fragment ProductSection on ContentfulProductSection {
     __typename
+    id
     title
     description {
       description

@@ -10,7 +10,7 @@ export const wrapRootElement = ({ element }) => {
     console.log(
       "Error: You need to specify FRONTEGG_BASE_URL and FRONTEGG_CLIENT_ID environment variables"
     );
-    return null;
+    return element;
   }
 
   return (
