@@ -1,5 +1,14 @@
 .hero {
   background: #fff;
+
+  .image {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
 }
 
 .content {
@@ -21,13 +30,4 @@
   font-size: 20px;
   line-height: 1.8em;
   max-width: 70%;
-}
-
-.image {
-  position: absolute;
-  right: 0;
-  width: 50%;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
 }
